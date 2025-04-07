@@ -4,15 +4,21 @@
 // 位置组件
 #pragma once
 #include <utility>  
+#include<SFML/Graphics.hpp>
 
-struct Position
+struct BlockPosition
 {
-	int x_;
-	int y_;
-    Position(int x = 0, int y = 0) noexcept : x_(x), y_(y) {}
-    Position(Position&& other) noexcept
+    float x_;
+    float y_;
+    BlockPosition(float x = 0, float y = 0) noexcept : x_(x), y_(y) {}
+    BlockPosition(BlockPosition&& other) noexcept
         : x_(std::exchange(other.x_, 0)),
         y_(std::exchange(other.y_, 0)) {
+    }
+
+    sf::Vector2f GetPosition()
+    {
+        return { x_,y_ };
     }
     
 	/// <summary>
@@ -21,8 +27,8 @@ struct Position
 	/// <returns>
 	/// 返回横坐标 纵坐标
 	/// </returns>
-    [[nodiscard]] int x() const noexcept { return x_; }
-    [[nodiscard]] int y() const noexcept { return y_; }
+	/*[[nodiscard]] int x() const noexcept { return x_; }
+	[[nodiscard]] int y() const noexcept { return y_; }*/
 
     /// <summary>
     /// translate

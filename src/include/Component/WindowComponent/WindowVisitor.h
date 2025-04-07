@@ -35,10 +35,9 @@ struct WindowVisitor
 		}
 		else
 		{
-			MyDebug::Dprint();
+			DLOG;
 		}
 	}
-
 
 	/// <summary>
 	///  Û±Í“∆∂Ø

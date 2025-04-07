@@ -3,6 +3,7 @@
 #include<iostream>
 #include<string>
 #include<string_view>
+#include<SFML/Graphics.hpp>
 
 #include"Position.h"
 
@@ -22,24 +23,4 @@ struct BlockKind
 	/// <param name="str">传入名字</param>
 	/// 
 	/// <returns>返回Kind</returns>
-	static Kind ToKind(std::string_view str)
-	{
-		if()
-		/*switch (str.c)
-		{
-		case "st":
-		{
-			return Kind::Stone;
-			break;
-		}
-		case "so":
-		{
-			return Kind::Soil;
-			break;
-		}
-		default:
-			return Kind::Empty;
-			break;
-		} */
-	}
 };

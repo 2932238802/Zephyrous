@@ -1,5 +1,6 @@
 
 #pragma once
+#include<SFML/Graphics.hpp>
 
 /// <summary>
 /// 方块的捡拾的难易程度
@@ -8,8 +9,8 @@ struct BlockDifficulty
 {
 	enum class Diffi
 	{
-		Hard,
-		Medium，
-		Easy
+		Hard=0,
+		Medium,
+		Easy,
 	};
 };

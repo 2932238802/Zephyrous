@@ -30,13 +30,18 @@ set(SOURCES
 set(HEADERS
     # ...（原有头文件路径）
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockDifficulty.h"
-    "${HEADER_INCLUDE}/Component/BlockComponent/BlockVolume.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockKind.h"
-    "${HEADER_INCLUDE}/Component/BlockComponent/Position.h"
+    "${HEADER_INCLUDE}/Component/BlockComponent/BlockPosition.h"
+    
+    "${HEADER_INCLUDE}/Component/BlockComponent/BlockSquare.h"
 
     "${HEADER_INCLUDE}/Component/PersonComponent/Stata.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
+
+    "${HEADER_INCLUDE}/Component/ViewComponent/ViewSize.h"
+    "${HEADER_INCLUDE}/Component/ViewComponent/ViewMove.h"
+    "${HEADER_INCLUDE}/Component/ViewComponent/ViewRuntime.h"
 
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowConfig.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowRuntime.h"
@@ -44,13 +49,18 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowFactory.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowVisitor.h"
 
+    "${HEADER_INCLUDE}/Factory/SquareFactory.h"
+
     "${HEADER_INCLUDE}/System/MapSystem.h"
     "${HEADER_INCLUDE}/System/PlayerSystem.h"
     "${HEADER_INCLUDE}/System/WindowSystem.h"
+    "${HEADER_INCLUDE}/System/ViewSystem.h"
+    "${HEADER_INCLUDE}/System/BlockSystem.h"
+    "${HEADER_INCLUDE}/System/RenderSystem.h"
 )
 
 # 生成可执行文件
-add_executable(Zephyrous ${SOURCES} ${HEADERS})
+add_executable(Zephyrous ${SOURCES} ${HEADERS} )
 
 # 链接库
 target_link_libraries(Zephyrous PRIVATE

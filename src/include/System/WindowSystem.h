@@ -60,19 +60,27 @@ public:
 	/// </param>
 	void Update(entt::registry& registry_)
 	{
-		auto view_runtime = registry_.view<WindowRuntime>();		// 获取WindowRuntime实体
-		for (auto entity_ : view_runtime)							// 遍历一遍所有的窗口 一般是一个
+		// 获取含有WindowRuntime的实体 //
+		auto view_runtime = registry_.view<std::unique_ptr<WindowRuntime>>();		
+
+		// 遍历一遍所有的窗口 一般是一个 //
+		for (auto entity_ : view_runtime)							
 		{
+
+			// 从entity_ 里面获取std::unique_ptr<WindowRuntime> //
 			auto& window_runtime = 
-				view_runtime.get<WindowRuntime>(entity_);			// 从entity_ 里面获取实体
-			auto& window_ = window_runtime.window_handle;			// 获取窗口句柄
-			if (!window_->isOpen())									// 如果已经关闭 直接摧毁entity
+				view_runtime.get<std::unique_ptr<WindowRuntime>>(entity_);	
+
+			// 获取窗口句柄 // 
+			auto& window_ = window_runtime->window_handle;
+
+			// 如果已经关闭 直接摧毁entity // 
+			if (!window_->isOpen())									
 			{
 				registry_.destroy(entity_);
-				MyDebug::Dprint();
 				continue;
 			}
-			window_->clear(window_runtime.clear_color);
+			window_->clear(window_runtime->clear_color);
 			//////////////////////////////////////////////////////////////////////////
 			// 需要完善
 			//////////////////////////////////////////////////////////////////////////
