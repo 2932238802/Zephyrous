@@ -1,0 +1,5 @@
+# 对所有文本文件使用LF换行符
+* text eol=lf
+
+# 对特定文件不进行换行符转换
+Zephyrous/third/includesfml/* -text
