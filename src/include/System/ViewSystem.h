@@ -10,8 +10,12 @@ class ViewSystem
 {
 private:
 	ViewRuntime view_;
-
+	entt::registry& registry_;
 public:
+	ViewSystem(entt::registry& registry_out):
+		registry_(registry_out)
+	{
+	}
 
 	/// <summary>
 	/// SetView - 设置视图
@@ -20,8 +24,8 @@ public:
 	/// 
 	/// <param name="registry_">
 	/// registry_ - 全局唯一esc
-	/// </param>3
-	void SetView(entt::registry& registry_)const
+	/// </param>
+	void SetView()const
 	{
 		auto contain_windowruntime_entity = registry_.view<std::unique_ptr<WindowRuntime>>();
 		for (auto entity_ : contain_windowruntime_entity)

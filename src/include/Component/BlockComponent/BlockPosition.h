@@ -12,8 +12,15 @@ struct BlockPosition
     float y_;
     BlockPosition(float x = 0, float y = 0) noexcept : x_(x), y_(y) {}
     BlockPosition(BlockPosition&& other) noexcept
-        : x_(std::exchange(other.x_, 0)),
-        y_(std::exchange(other.y_, 0)) {
+    {
+        x_ = other.x_;
+        y_ = other.y_;
+    }
+
+    BlockPosition(const BlockPosition& other)
+    {
+        x_ = other.x_;
+        y_ = other.y_;
     }
 
     sf::Vector2f GetPosition()

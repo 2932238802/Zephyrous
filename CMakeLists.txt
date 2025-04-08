@@ -49,14 +49,13 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowFactory.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowVisitor.h"
 
-    "${HEADER_INCLUDE}/Factory/SquareFactory.h"
-
     "${HEADER_INCLUDE}/System/MapSystem.h"
     "${HEADER_INCLUDE}/System/PlayerSystem.h"
     "${HEADER_INCLUDE}/System/WindowSystem.h"
     "${HEADER_INCLUDE}/System/ViewSystem.h"
     "${HEADER_INCLUDE}/System/BlockSystem.h"
     "${HEADER_INCLUDE}/System/RenderSystem.h"
+    "${HEADER_INCLUDE}/System/CreateSystem.h"
 )
 
 # 生成可执行文件

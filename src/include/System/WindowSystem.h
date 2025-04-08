@@ -8,20 +8,24 @@
 #include"WindowComponent/WindowFactory.h"
 #include"WindowComponent/WindowVisitor.h"
 
+#include"System/RenderSystem.h"
+
 #include"Tool/Debug.h"
 
 class WindowSystem
 {
 private:
 	WindowVisitor visitor_;
-
+	entt::registry& registry_;
 public:
 	/// <summary>
 	/// 默认构造
 	/// </summary>
-	WindowSystem():
-		visitor_(nullptr)
+	WindowSystem(entt::registry& registry_out):
+		visitor_(nullptr),
+		registry_(registry_out)
 	{}
+
 
 	/// <summary>
 	/// Initialize - 配置 WindowRuntime 
@@ -36,7 +40,7 @@ public:
 	/// <param name="config_">
 	/// 配置参数
 	/// </param>
-	void Initialize(entt::registry& registry_, const WindowConfig& config_)
+	void Initialize(const WindowConfig& config_)
 	{
 		auto entt_ = registry_.create();
 		std::unique_ptr<WindowRuntime> window_runtime = 
@@ -58,7 +62,7 @@ public:
 	/// <param name="registry_">
 	/// registry_ - 全局唯一enttr::egister
 	/// </param>
-	void Update(entt::registry& registry_)
+	void Update(RenderSystem&  render)
 	{
 		// 获取含有WindowRuntime的实体 //
 		auto view_runtime = registry_.view<std::unique_ptr<WindowRuntime>>();		
@@ -81,6 +85,11 @@ public:
 				continue;
 			}
 			window_->clear(window_runtime->clear_color);
+
+			DLOG;
+			render.DrawSquare();
+			DLOG;
+
 			//////////////////////////////////////////////////////////////////////////
 			// 需要完善
 			//////////////////////////////////////////////////////////////////////////
@@ -90,6 +99,7 @@ public:
 			window_->display();
 		}
 	}
+
 
 private: 
 	/// <summary>
