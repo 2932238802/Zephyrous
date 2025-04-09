@@ -27,20 +27,6 @@ struct BlockPosition
     {
         return { x_,y_ };
     }
-    
-	/// <summary>
-    /// x,y
-    /// </summary>
-	/// <returns>
-	/// 返回横坐标 纵坐标
-	/// </returns>
-	/*[[nodiscard]] int x() const noexcept { return x_; }
-	[[nodiscard]] int y() const noexcept { return y_; }*/
 
-    /// <summary>
-    /// translate
-    /// </summary>
-    /// <param name="dx">移动位置移动</param>
-    /// <param name="dy">纵坐标位置移动</param>
-    void translate(int dx, int dy) noexcept { x_ += dx; y_ += dy; }
+    
 };

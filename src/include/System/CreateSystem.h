@@ -5,6 +5,7 @@
 
 #include"BlockComponent/BlockPosition.h"
 #include"BlockComponent/BlockSquare.h"
+#include"BlockComponent/BlockMovement.h"
 
 class CreateSystem
 {
@@ -13,6 +14,10 @@ private:
 
 public:
 
+	/// <summary>
+	/// 参数构造
+	/// </summary>
+	/// <param name="registry_out"></param>
 	CreateSystem(entt::registry& registry_out):
 		registry_(registry_out)
 	{}
@@ -36,5 +41,9 @@ public:
 		auto entt_ = registry_.create();
 		registry_.emplace<BlockPosition>(entt_, pos_);
 		registry_.emplace<BlockSquare>(entt_, square_);
+
+		//////////////////////////////////////////////////////////////////////////
+		registry_.emplace<BlockMoveAble>(entt_);
+		//////////////////////////////////////////////////////////////////////////
 	}
 };

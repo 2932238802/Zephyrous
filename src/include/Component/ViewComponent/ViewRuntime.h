@@ -4,19 +4,14 @@
 struct ViewRuntime
 {
 	sf::View view;
+	
+	ViewRuntime() = default;
 
-	ViewRuntime()
+
+	const void Init(const sf::FloatRect&rect_out ,const sf::Vector2f&size_out , const sf::Vector2f&center_out)
 	{
-		//////////////////////////////////////////////////////////////////////////
-		// 这里可以json 优化
-		//////////////////////////////////////////////////////////////////////////
-		sf::FloatRect _viewport(									//归一化
-			{ 0.f,0.f },
-			{ 1.f,1.f }
-		);
-
-		view.setSize({ 600.f,600.f });
-		view.setCenter({ 300.f, 300.f});
-		view.setViewport(_viewport);
+		view.setSize(size_out);
+		view.setCenter(size_out);
+		view.setViewport(rect_out);
 	}
 };

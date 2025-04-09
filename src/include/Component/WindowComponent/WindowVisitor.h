@@ -35,7 +35,7 @@ struct WindowVisitor
 		}
 		else
 		{
-			DLOG;
+			DLOG("wrong in window(is nullptr!)");
 		}
 	}
 

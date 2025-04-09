@@ -7,8 +7,6 @@ struct State
 	int energe_;
 	State(int hp, int energe) :hp_(hp), energe_(energe) {}
 
-
-
 	/// <summary>
 	/// AlterAttr - 改变属性
 	/// </summary>
@@ -19,7 +17,6 @@ struct State
 		hp_ += alter_hp;
 		energe_ += alter_energe;
 	}
-
 
 	/// <summary>
 	/// hp,energe - 返回对应属性（生命值，精力）

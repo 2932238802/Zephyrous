@@ -14,8 +14,7 @@ int main()
 	// ≈‰÷√¥∞ø⁄ //
 	{
 		WindowConfig config_;
-		config_.mode_ = sf::VideoMode({ 600,600 });
-		config_.name_ = "Zephyrous";
+		config_.LoadData();
 		windowsystemsystem_.Initialize(config_);
 	}
 

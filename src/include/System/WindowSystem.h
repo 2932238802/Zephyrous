@@ -86,9 +86,9 @@ public:
 			}
 			window_->clear(window_runtime->clear_color);
 
-			DLOG;
+			//DLOG;
 			render.DrawSquare();
-			DLOG;
+			//DLOG;
 
 			//////////////////////////////////////////////////////////////////////////
 			// ÐèÒªÍêÉÆ

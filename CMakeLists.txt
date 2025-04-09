@@ -17,6 +17,11 @@ set(HEADER_INCLUDE "${PROJECT_SOURCE_DIR}/src/include")
 # 查找 SFML（通过 vcpkg）
 find_package(SFML COMPONENTS Graphics Window System Network Audio CONFIG REQUIRED)
 
+
+# 查找json包
+find_package(nlohmann_json CONFIG REQUIRED)
+set(nlohmann-json_IMPLICIT_CONVERSIONS OFF)
+
 # 查找 EnTT
 set(ENTT_DIR "${PROJECT_SOURCE_DIR}/third/entt/include")
 find_package(EnTT 3.14.0 CONFIG REQUIRED)
@@ -26,22 +31,26 @@ set(SOURCES
     "${PROJECT_SOURCE_DIR}/src/Main.cpp"
 )
 
+
 # 头文件列表（保持原样）
 set(HEADERS
     # ...（原有头文件路径）
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockDifficulty.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockKind.h"
+    "${HEADER_INCLUDE}/Component/BlockComponent/BlockMovement.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockPosition.h"
-    
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockSquare.h"
 
     "${HEADER_INCLUDE}/Component/PersonComponent/Stata.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
+    "${HEADER_INCLUDE}/Component/Tool/Scale.h"
 
-    "${HEADER_INCLUDE}/Component/ViewComponent/ViewSize.h"
+    
     "${HEADER_INCLUDE}/Component/ViewComponent/ViewMove.h"
     "${HEADER_INCLUDE}/Component/ViewComponent/ViewRuntime.h"
+    "${HEADER_INCLUDE}/Component/ViewComponent/ViewConfig.h"
+    
 
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowConfig.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowRuntime.h"
@@ -56,6 +65,8 @@ set(HEADERS
     "${HEADER_INCLUDE}/System/BlockSystem.h"
     "${HEADER_INCLUDE}/System/RenderSystem.h"
     "${HEADER_INCLUDE}/System/CreateSystem.h"
+    "${HEADER_INCLUDE}/System/MoveSystem.h"
+
 )
 
 # 生成可执行文件
@@ -69,6 +80,7 @@ target_link_libraries(Zephyrous PRIVATE
     SFML::System
     SFML::Network
     SFML::Audio
+    nlohmann_json::nlohmann_json
 )
 
 # 包含目录

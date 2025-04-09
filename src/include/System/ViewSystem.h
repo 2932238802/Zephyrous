@@ -4,6 +4,7 @@
 
 #include"ViewComponent/ViewRuntime.h"
 #include"WindowComponent/WindowRuntime.h"
+#include"ViewComponent/ViewConfig.h"
 
 
 class ViewSystem
@@ -15,6 +16,15 @@ public:
 	ViewSystem(entt::registry& registry_out):
 		registry_(registry_out)
 	{
+	}
+
+	void Init(ViewConfig&&config_)
+	{
+		view_.Init(
+			config_.rect_,
+			config_.size_,
+			config_.center_
+		);
 	}
 
 	/// <summary>

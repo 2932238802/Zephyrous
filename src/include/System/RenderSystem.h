@@ -34,18 +34,18 @@ public:
 		// block_position_square_all - BlockPosition, BlockSquare //
 		auto windowruntime_all = register_.view<std::unique_ptr<WindowRuntime>>();
 		auto block_position_square_all =
-						register_.view<BlockPosition, BlockSquare>();
+						register_.view<BlockPosition, BlockSquare,BlockMoveAble>();
 		
 		// entity_ - 每一个实体 block_position_square_all //
 		for (auto entity_ : block_position_square_all)
 		{
 			// 获取每一个实体的图形和形状 //
 			// square_.shape_.setPosition 并设置 //
-			const auto& pos_ = block_position_square_all.get<BlockPosition>(entity_);
+			auto& pos_ = block_position_square_all.get<BlockPosition>(entity_);
 			auto& square_ = block_position_square_all.get<BlockSquare>(entity_);
 			square_.shape_.setPosition({ pos_.x_, pos_.y_ });
 
-			DLOG;
+			translate(pos_.x_, pos_.y_,10.f,10.f);
 
 			// 绘画 //
 			if (!windowruntime_all.empty())
@@ -55,6 +55,24 @@ public:
 				window_ptr->window_handle->draw(square_.shape_);
 			}
 		}
+	}
+
+
+private:
+	/// <summary>
+	/// translate
+	/// </summary>
+	/// <param name="dx">移动位置移动</param>
+	/// <param name="dy">纵坐标位置移动</param>
+	void translate(
+		float& x, 
+		float& y,
+		float dx,
+		float dy
+	) noexcept 
+	{ 
+		x + dx;
+		y + dy;
 	}
 
 };

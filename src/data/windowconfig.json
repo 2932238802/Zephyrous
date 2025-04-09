@@ -1,0 +1,16 @@
+{
+	"windowmode": {
+		"width": 1000,
+		"height": 1000
+	},
+	"name": "Zephyrous",
+	"style": 4194304, // sf::Style::Default
+	"vsync": true,
+	"clear_color":
+	{
+		"r": 0,
+		"g": 0,
+		"b": 0,
+		"a": 255
+	}
+}
