@@ -17,6 +17,7 @@ class WindowSystem
 private:
 	WindowVisitor visitor_;
 	entt::registry& registry_;
+	WindowRuntime window_;
 public:
 	/// <summary>
 	/// 默认构造
@@ -40,17 +41,18 @@ public:
 	/// <param name="config_">
 	/// 配置参数
 	/// </param>
-	void Initialize(const WindowConfig& config_)
+	std::shared_ptr<sf::RenderWindow> Init(const WindowConfig& config_)
 	{
 		auto entt_ = registry_.create();
-		std::unique_ptr<WindowRuntime> window_runtime = 
+		window_ =
 			WindowFactory::CreateWindow(
 			config_.mode_,											// 大小 //
 			config_.name_											// 名字 //
 		);
-		visitor_.SetWindow(window_runtime->window_handle.get());	// 监听器
-		registry_.emplace<std::unique_ptr<WindowRuntime>>
-			(entt_, std::move(window_runtime));						// 放入entity //
+		window_.clear_color = config_.clear_color;
+		
+		visitor_.SetWindow(window_.window_handle);			// 监听器
+		return window_.window_handle;
 	}
 
 
@@ -64,40 +66,12 @@ public:
 	/// </param>
 	void Update(RenderSystem&  render)
 	{
-		// 获取含有WindowRuntime的实体 //
-		auto view_runtime = registry_.view<std::unique_ptr<WindowRuntime>>();		
-
-		// 遍历一遍所有的窗口 一般是一个 //
-		for (auto entity_ : view_runtime)							
-		{
-
-			// 从entity_ 里面获取std::unique_ptr<WindowRuntime> //
-			auto& window_runtime = 
-				view_runtime.get<std::unique_ptr<WindowRuntime>>(entity_);	
-
-			// 获取窗口句柄 // 
-			auto& window_ = window_runtime->window_handle;
-
-			// 如果已经关闭 直接摧毁entity // 
-			if (!window_->isOpen())									
-			{
-				registry_.destroy(entity_);
-				continue;
-			}
-			window_->clear(window_runtime->clear_color);
-
-			//DLOG;
-			render.DrawSquare();
-			//DLOG;
-
-			//////////////////////////////////////////////////////////////////////////
-			// 需要完善
-			//////////////////////////////////////////////////////////////////////////
-			while (std::optional<sf::Event>&& e_ = window_->pollEvent()) {
-				HandleEvent(*e_);												// 处理每个事件
-			}
-			window_->display();
+		window_.window_handle->clear(window_.clear_color);
+		render.DrawSquare();
+		while (std::optional<sf::Event>&& e_ = window_.window_handle->pollEvent()) {
+			HandleEvent(*e_);												// 处理每个事件
 		}
+		window_.window_handle->display();
 	}
 
 

@@ -26,9 +26,9 @@ public:
 	/// <returns>
 	/// 指向 WindowRuntime的唯一指针
 	/// </returns>
-	static std::unique_ptr<WindowRuntime> CreateWindow(const sf::VideoMode& mode_, const std::string& title_, sf::Color clear_color_out = sf::Color::Black)
+	static WindowRuntime CreateWindow(const sf::VideoMode& mode_, const std::string& title_, sf::Color clear_color_out = sf::Color::Black)
 	{
-		return std::make_unique<WindowRuntime>(mode_, title_, clear_color_out);
+		return WindowRuntime(mode_, title_, clear_color_out);
 	}
 };
 

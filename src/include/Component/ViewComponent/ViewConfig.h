@@ -11,13 +11,21 @@ struct ViewConfig
 	sf::Vector2f size_;
 	sf::Vector2f center_;
 
+
+
+
+	//////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// LoadData - 加载数据
+	/// </summary>
 	void LoadData()
 	{
 		std::ifstream read_file("viewconfig.json");
+		std::ifstream read_window_file("windowconfig.json");
 
 		try
 		{
-			if (!read_file.is_open())
+			if (!read_file.is_open()|| !read_window_file.is_open())
 			{
 				DLOG("wrong in open json");
 			}
@@ -29,8 +37,10 @@ struct ViewConfig
 
 		// 读取文件 到json 参数 //
 		nlohmann::json json_file;
+		nlohmann::json json_window_file;
 		try {
 			read_file >> json_file;
+			read_window_file >> json_window_file;
 		}
 		catch (nlohmann::json::parse_error& e_)
 		{
@@ -41,12 +51,27 @@ struct ViewConfig
 		try
 		{
 			auto& view_mode = json_file.at("view_mode");
-			rect_.size.x = view_mode.at("width").get<float>();
-			rect_.size.y = view_mode.at("height").get<float>();
-			rect_.position.x = view_mode.at("left").get<float>();
-			rect_.position.y = view_mode.at("top").get<float>();
-			size_ = rect_.size;
-			center_ = { rect_.size.x / 2.0f , rect_.size.y / 2.0f };
+
+			rect_ = {
+				{
+					view_mode.at("mode_left").get<float>(),
+					view_mode.at("mode_top").get<float>()
+				},
+				{
+					view_mode.at("mode_width").get<float>(),
+					view_mode.at("mode_height").get<float>()
+				}
+			};
+
+			auto& size_window = json_window_file.at("windowmode");
+			float size_s_width = size_window.at("width").get<float>();
+			float size_s_height = size_window.at("height").get<float>();
+
+			size_ = { size_s_width,size_s_height };
+			center_ = { size_s_width / 2.0f , size_s_height / 2.0f };
+
+			std::cout << "view size_x:" << size_.x << "view size_y:" << size_.y << std::endl;
+			std::cout << "view center_x:" << center_.x << "view center_y" << center_.y << std::endl;
 		}
 		// 超过范围 //
 		catch (nlohmann::json::out_of_range&)
@@ -58,8 +83,7 @@ struct ViewConfig
 		{
 			DLOG("wrong in type！");
 		}
-
-
 	}
+	//////////////////////////////////////////////////////////////////////////
 
 };

@@ -77,11 +77,12 @@ struct WindowConfig
 			vsync_ = json_file.at("vsync").get<bool>();
 
 			// ÑÕÉ« //
+			auto& color = json_file.at("clear_color");
 			clear_color = sf::Color(
-				json_file.at("r").get<uint8_t>(),
-				json_file.at("g").get<uint8_t>(),
-				json_file.at("b").get<uint8_t>(),
-				json_file.at("a").get<uint8_t>()
+				color.at("r").get<uint8_t>(),
+				color.at("g").get<uint8_t>(),
+				color.at("b").get<uint8_t>(),
+				color.at("a").get<uint8_t>()
 			);
 		}
 		// ³¬¹ý·¶Î§ //

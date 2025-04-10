@@ -7,7 +7,7 @@
 /// </summary>
 struct WindowRuntime
 {
-	std::unique_ptr<sf::RenderWindow> window_handle;
+	std::shared_ptr<sf::RenderWindow> window_handle;
 	sf::Color clear_color = sf::Color::Black;
 
 	/// <summary>
@@ -30,7 +30,7 @@ struct WindowRuntime
 		window_handle(std::make_unique<sf::RenderWindow>(mode_, title_, sf::Style::Titlebar | sf::Style::Close)),
 		clear_color(clear_color_out)
 	{
-		if (window_handle)
+		if (&window_handle)
 		{
 			window_handle->setFramerateLimit(60);
 			window_handle->setKeyRepeatEnabled(false);			// ½ûÓÃ°´¼üÖØ¸´

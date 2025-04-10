@@ -19,7 +19,9 @@ std::invalid_argument、std::out_of_range等异常都继承自std::logic_error。
 这是一个通用的运行时错误异常基类，用于表示在程序运行时发生的错误，\
 如文件打开失败、网络连接中断等。
 
-
-
-
+## auto& 和 auto的最大区别
+auto 需要独立的副本 处理基础类型 int double 操作右值或者临时对象
+auto& 避免大型拷贝 需要修改原对象 配个const 实现只读访问
+auto 关键字 永远不会推导出引用类型
+auto& 是 强制让变量成为左值引用 的声明方式
 

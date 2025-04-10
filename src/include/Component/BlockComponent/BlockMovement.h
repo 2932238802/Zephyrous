@@ -1,15 +1,18 @@
 
 #pragma once
 
-struct BLockMovement
+
+struct BlockMovement
 {
 };
 
 
-struct BlockMoveAble
-{
-};
+/// <summary>
+/// BlockMoveAble - 标签作用 - 表示运动
+/// </summary>
+struct BlockMoveAble{};
 
-struct BlockStatic
-{
-};
+/// <summary>
+/// BlockStatic - 标签作用 表示静止
+/// </summary>
+struct BlockStatic{};
