@@ -14,7 +14,7 @@ struct ViewRuntime
 
 		// 2. 调整坐标系原点：将 (0,0) 映射到窗口中心
 		sf::Vector2f originOffset = center_out;		// center_out应为 (750,750)
-		view.setCenter(originOffset);				// 视图中心对准游戏世界中的 (750,750)
+		view.setCenter(center_out);				// 视图中心对准游戏世界中的 (750,750)
 
 		std::cout << "View Size: " << size_out.x << ", " << size_out.y << std::endl;
 		std::cout << "View Center: " << center_out.x << ", " << center_out.y << std::endl;

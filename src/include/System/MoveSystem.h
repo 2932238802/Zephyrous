@@ -39,7 +39,7 @@ public:
 		for (auto entity_ : entities)
 		{
 			auto& position_ = entities.get<BlockPosition>(entity_);
-			position_.x_ += (deltatime_ * 1.0);
+			position_.x_ += (deltatime_ * 3.0);
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////

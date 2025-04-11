@@ -67,7 +67,7 @@ public:
 	void Update(RenderSystem&  render)
 	{
 		window_.window_handle->clear(window_.clear_color);
-		render.DrawSquare();
+		//render.DrawSquare();
 		while (std::optional<sf::Event>&& e_ = window_.window_handle->pollEvent()) {
 			HandleEvent(*e_);												// 处理每个事件
 		}

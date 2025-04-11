@@ -5,12 +5,16 @@
 /// <summary>
 /// 方块的捡拾的难易程度
 /// </summary>
-struct BlockDifficulty
+/// 
+/// 
+enum class Diffi
 {
-	enum class Diffi
-	{
-		Hard=0,
+	Hard = 0,
 		Medium,
 		Easy,
-	};
+};
+struct BlockDifficulty
+{
+	
+	Diffi diffi_;
 };

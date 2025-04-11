@@ -6,6 +6,13 @@
 #include <utility>  
 #include<SFML/Graphics.hpp>
 
+
+
+
+//////////////////////////////////////////////////////////////////////////
+/// <summary>
+/// 
+/// </summary>
 struct BlockPosition
 {
     float x_;
@@ -27,6 +34,5 @@ struct BlockPosition
     {
         return { x_,y_ };
     }
-
-    
 };
+//////////////////////////////////////////////////////////////////////////

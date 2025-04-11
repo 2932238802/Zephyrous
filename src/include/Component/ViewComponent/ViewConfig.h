@@ -68,7 +68,7 @@ struct ViewConfig
 			float size_s_height = size_window.at("height").get<float>();
 
 			size_ = { size_s_width,size_s_height };
-			center_ = { size_s_width / 2.0f , size_s_height / 2.0f };
+			center_ = { 0.0f,0.0f };
 
 			std::cout << "view size_x:" << size_.x << "view size_y:" << size_.y << std::endl;
 			std::cout << "view center_x:" << center_.x << "view center_y" << center_.y << std::endl;

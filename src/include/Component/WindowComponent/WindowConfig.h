@@ -24,7 +24,9 @@ struct WindowConfig
 	sf::Color clear_color;
 
 	WindowConfig() = default;
+	
 
+	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// LoadData - º”‘ÿ ˝æ›
 	/// </summary>
@@ -95,6 +97,6 @@ struct WindowConfig
 		{
 			DLOG("wrong in type£°");
 		}
-
 	}
+	//////////////////////////////////////////////////////////////////////////
 };

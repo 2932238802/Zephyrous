@@ -8,7 +8,7 @@ if (DEFINED ENV{VCPKG_ROOT})
 endif()
 
 # 标准配置
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 头文件路径
@@ -41,16 +41,22 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockPosition.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockSquare.h"
 
-    "${HEADER_INCLUDE}/Component/PersonComponent/Stata.h"
+    
+    "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkIsdirty.h"
+    "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkIsload.h"
+    "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkPos.h"
+    "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkConfig.h"
+
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerStata.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerPosition.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerStata.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
     "${HEADER_INCLUDE}/Component/Tool/Scale.h"
-
     
     "${HEADER_INCLUDE}/Component/ViewComponent/ViewMove.h"
     "${HEADER_INCLUDE}/Component/ViewComponent/ViewRuntime.h"
     "${HEADER_INCLUDE}/Component/ViewComponent/ViewConfig.h"
-    
 
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowConfig.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowRuntime.h"
@@ -61,11 +67,10 @@ set(HEADERS
     "${HEADER_INCLUDE}/System/PlayerSystem.h"
     "${HEADER_INCLUDE}/System/WindowSystem.h"
     "${HEADER_INCLUDE}/System/ViewSystem.h"
-    
     "${HEADER_INCLUDE}/System/RenderSystem.h"
     "${HEADER_INCLUDE}/System/CreateSystem.h"
     "${HEADER_INCLUDE}/System/MoveSystem.h"
-
+    "${HEADER_INCLUDE}/System/ChunkSystem.h"
 )
 
 # 生成可执行文件

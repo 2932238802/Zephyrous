@@ -60,6 +60,7 @@ public:
 
 		for (auto [entity_, pos_, square_ ]:block_position_square_all.each())
 		{
+			square_.shape_.setPosition(pos_.GetPosition());
 			window_->draw(square_.shape_);
 		}
 	}
