@@ -18,16 +18,21 @@ private:
 	WindowVisitor visitor_;
 	entt::registry& registry_;
 	WindowRuntime window_;
-public:
+
+
+
 	/// <summary>
 	/// 默认构造
 	/// </summary>
+	public:
 	WindowSystem(entt::registry& registry_out):
 		visitor_(nullptr),
 		registry_(registry_out)
 	{}
 
 
+
+	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// Initialize - 配置 WindowRuntime 
 	/// 放入到 全局唯一的 registry_ 里面
@@ -41,6 +46,7 @@ public:
 	/// <param name="config_">
 	/// 配置参数
 	/// </param>
+	public:
 	std::shared_ptr<sf::RenderWindow> Init(const WindowConfig& config_)
 	{
 		auto entt_ = registry_.create();
@@ -54,9 +60,11 @@ public:
 		visitor_.SetWindow(window_.window_handle);			// 监听器
 		return window_.window_handle;
 	}
+	//////////////////////////////////////////////////////////////////////////
 
 
-public:
+
+	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// 更新一次 window 窗口 渲染一次
 	/// </summary>
@@ -64,25 +72,31 @@ public:
 	/// <param name="registry_">
 	/// registry_ - 全局唯一enttr::egister
 	/// </param>
+	public:
 	void Update(RenderSystem&  render)
 	{
 		window_.window_handle->clear(window_.clear_color);
-		//render.DrawSquare();
+		render.DrawSquare();
 		while (std::optional<sf::Event>&& e_ = window_.window_handle->pollEvent()) {
 			HandleEvent(*e_);												// 处理每个事件
 		}
 		window_.window_handle->display();
 	}
+	//////////////////////////////////////////////////////////////////////////
 
 
-private: 
+
+
+	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// HandleEvent - 处理各种输入
 	/// </summary>
+	private: 
 	void HandleEvent(const sf::Event& e_)
 	{
 		e_.visit(visitor_);
 	}
+	//////////////////////////////////////////////////////////////////////////
 
 private:
 

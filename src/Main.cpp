@@ -8,17 +8,18 @@ int main()
 	//////////////////////////////////////////////////////////////////////////
 	// 全局 esc //
 	entt::registry registry_;
-	WindowSystem windowsystemsystem_(registry_);			// 窗口系统
+	WindowSystem windowsystem_(registry_);			// 窗口系统
 	std::shared_ptr<sf::RenderWindow> window_;
 	{
 		WindowConfig config_window;
 		config_window.LoadData();
-		window_ = windowsystemsystem_.Init(config_window);
+		window_ = windowsystem_.Init(config_window);
 	}
 	ViewSystem viewsystem_(registry_ ,window_);			// 视图系统
 	MoveSystem movesystem_(registry_, window_);			// 移动系统	
 	RenderSystem rendersystem_(registry_, window_);		// 渲染系统
-	ChunkSysteem mapsystem_(registry_, window_);
+	ChunkSysteem chunksystem_(registry_, window_);
+	chunksystem_.ChunkLoad();
 	{
 		ViewConfig config_view;
 		config_view.LoadData();
@@ -26,13 +27,16 @@ int main()
 	}
 	sf::Clock clock;
 	
+
+
+
 	//////////////////////////////////////////////////////////////////////////
 	// 主循环 //
 	while(true)
 	{
 		float delta_time = clock.restart().asSeconds();
 		viewsystem_.SetView();
-		windowsystemsystem_.Update(rendersystem_);
+		windowsystem_.Update(rendersystem_);
 		movesystem_.Update(delta_time);
 
 		if (!window_->isOpen())

@@ -20,6 +20,8 @@ private:
 	entt::registry& registry_;
 	std::shared_ptr<sf::RenderWindow> window_;
 
+
+
 public:
 	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -38,7 +40,6 @@ public:
 
 
 
-
 public:
 	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -48,25 +49,22 @@ public:
 	{
 		// windowtunrime_all - 获取拥有属性 //
 		// block_position_square_all - BlockPosition, BlockSquare //
-		int i = 0;
 		auto block_position_square_all =
 			registry_.view<
-			BlockPosition, 
+			BlockPosition,
 			BlockSquare,
 			BlockKind,
 			BlockDifficulty,
 			BlockMoveAble
 			>();
 
-		if (block_position_square_all.begin()== block_position_square_all.end())
+		if (block_position_square_all.begin() == block_position_square_all.end())
 		{
-			std::cout << "entt is empty" << std::endl;
+			DLOG("entt is empty");
 		}
-
-		for (auto [entity_, pos_, square_,kind_,diffi_]:block_position_square_all.each())
+		for (auto [entity_, pos_, square_, kind_, diffi_] : block_position_square_all.each())
 		{
 			square_.shape_.setPosition(pos_.GetPosition());
-			std::cout << i++ << std::endl;
 			window_->draw(square_.shape_);
 		}
 	}

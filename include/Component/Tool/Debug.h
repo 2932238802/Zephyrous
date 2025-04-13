@@ -7,7 +7,7 @@ class MyDebug {
 public:
 	// 实际实现（接受调用位置参数7
 	static void DprintImpl(const char* file, int line, const char* str_) {
-		std::ofstream log_file("D:/桌面/Zephyrous/src/include/Component/Tool/debug.log", std::ios::app);
+		std::ofstream log_file("./debug.log", std::ios::app);
 		if (log_file.is_open()) {
 			log_file << "调用位置: " << file << ":" << line <<"content:"<<str_<< std::endl;
 			log_file.close();
