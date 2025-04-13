@@ -3,10 +3,8 @@
 #include<SFML/Graphics.hpp>
 #include<entt/entt.hpp>
 
-#include"BlockComponent/BlockPosition.h"
-#include"BlockComponent/BlockSquare.h"
 #include"WindowComponent/WindowRuntime.h"
-
+#include"ChunkComponent/ChunkConfig.h"
 #include"Tool/Debug.h"
 
 /// <summary>
@@ -50,17 +48,25 @@ public:
 	{
 		// windowtunrime_all - 获取拥有属性 //
 		// block_position_square_all - BlockPosition, BlockSquare //
+		int i = 0;
 		auto block_position_square_all =
-			registry_.view<BlockPosition, BlockSquare,BlockMoveAble>();
+			registry_.view<
+			BlockPosition, 
+			BlockSquare,
+			BlockKind,
+			BlockDifficulty,
+			BlockMoveAble
+			>();
 
 		if (block_position_square_all.begin()== block_position_square_all.end())
 		{
 			std::cout << "entt is empty" << std::endl;
 		}
 
-		for (auto [entity_, pos_, square_ ]:block_position_square_all.each())
+		for (auto [entity_, pos_, square_,kind_,diffi_]:block_position_square_all.each())
 		{
 			square_.shape_.setPosition(pos_.GetPosition());
+			std::cout << i++ << std::endl;
 			window_->draw(square_.shape_);
 		}
 	}

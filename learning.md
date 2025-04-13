@@ -25,3 +25,11 @@ auto& 避免大型拷贝 需要修改原对象 配个const 实现只读访问
 auto 关键字 永远不会推导出引用类型
 auto& 是 强制让变量成为左值引用 的声明方式
 
+## 
+```C++
+auto reader_ = std; :make_unique<std::ifstream>("chunkconfig.json");
+reader_ -> exception(std::ifstream::failbit|std::ifstream::badbit);
+```
+
+- failbit 逻辑错误 文件打开失败 类型转换失败
+- badbit 物理错误 磁盘损坏 文件被占用

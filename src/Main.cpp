@@ -16,10 +16,9 @@ int main()
 		window_ = windowsystemsystem_.Init(config_window);
 	}
 	ViewSystem viewsystem_(registry_ ,window_);			// 视图系统
-	CreateSystem createsystem_(registry_, window_);		// 模块系统
 	MoveSystem movesystem_(registry_, window_);			// 移动系统	
 	RenderSystem rendersystem_(registry_, window_);		// 渲染系统
-	MapSysteem mapsystem_(registry_, window_);
+	ChunkSysteem mapsystem_(registry_, window_);
 	{
 		ViewConfig config_view;
 		config_view.LoadData();

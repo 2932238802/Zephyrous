@@ -12,7 +12,7 @@ set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # 头文件路径
-set(HEADER_INCLUDE "${PROJECT_SOURCE_DIR}/src/include")
+set(HEADER_INCLUDE "${PROJECT_SOURCE_DIR}/include")
 
 # 查找 SFML（通过 vcpkg）
 find_package(SFML COMPONENTS Graphics Window System Network Audio CONFIG REQUIRED)
@@ -68,7 +68,7 @@ set(HEADERS
     "${HEADER_INCLUDE}/System/WindowSystem.h"
     "${HEADER_INCLUDE}/System/ViewSystem.h"
     "${HEADER_INCLUDE}/System/RenderSystem.h"
-    "${HEADER_INCLUDE}/System/CreateSystem.h"
+    
     "${HEADER_INCLUDE}/System/MoveSystem.h"
     "${HEADER_INCLUDE}/System/ChunkSystem.h"
 )

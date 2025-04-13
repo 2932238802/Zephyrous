@@ -10,7 +10,3 @@
 #include"BlockComponent/BlockSquare.h"
 
 
-struct ChunkConfig
-{
-
-};

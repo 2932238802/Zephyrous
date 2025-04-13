@@ -16,4 +16,14 @@ struct BlockKind
 {
 	
 	Kind kind_;
+
+	BlockKind(Kind&& kind_out):
+		kind_(kind_out)
+	{
+	}
+
+	BlockKind(const Kind& kind_out) :
+		kind_(kind_out)
+	{
+	}
 };
