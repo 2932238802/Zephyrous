@@ -4,9 +4,8 @@
 
 #include"WindowComponent/WindowRuntime.h"
 
-class WindowFactory
+struct WindowFactory
 {
-public:
 	/// <summary>
 	/// 创建并返回一个新的 WindowRuntime 实例
 	/// </summary>

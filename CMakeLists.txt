@@ -40,16 +40,18 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockMovement.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockPosition.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockSquare.h"
-
     
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkIsdirty.h"
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkIsload.h"
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkPos.h"
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkConfig.h"
 
-    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerStata.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerChunk.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerPosition.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerStata.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerEquip.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerItem.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayMovement.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
     "${HEADER_INCLUDE}/Component/Tool/Scale.h"

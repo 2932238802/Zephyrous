@@ -18,7 +18,7 @@ int main()
 	ViewSystem viewsystem_(registry_ ,window_);			// 视图系统
 	MoveSystem movesystem_(registry_, window_);			// 移动系统	
 	RenderSystem rendersystem_(registry_, window_);		// 渲染系统
-	ChunkSysteem chunksystem_(registry_, window_);
+	ChunkSystem chunksystem_(registry_, window_);
 	chunksystem_.ChunkLoad();
 	{
 		ViewConfig config_view;
@@ -26,6 +26,8 @@ int main()
 		viewsystem_.Init(config_view);
 	}
 	sf::Clock clock;
+
+	
 	
 
 
@@ -37,8 +39,6 @@ int main()
 		float delta_time = clock.restart().asSeconds();
 		viewsystem_.SetView();
 		windowsystem_.Update(rendersystem_);
-		movesystem_.Update(delta_time);
-
 		if (!window_->isOpen())
 		{
 			registry_.clear();  // 清除所有实体和组件
