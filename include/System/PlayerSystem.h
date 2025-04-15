@@ -8,13 +8,13 @@
 
 namespace
 {
-	constexpr float play_a =0.7;						// 加速度
+	constexpr float play_a =-0.9;						// 加速度
 	constexpr sf::Vector2f pos_{ 0.f,-50.f };			// 人物移动
 	constexpr sf::Vector2f size_player(100.f, 100.f);	// 人物体积
 	constexpr float	thickness_player = 0.f;				// 边框粗度
 	constexpr sf::Color color_in(sf::Color::Blue);		// 人物内置颜色	
 	constexpr sf::Color color_out(sf::Color::Blue);		// 人物外置颜色	
-	constexpr sf::Vector2f v_{0.f,0.f};							// 人物外置颜色	
+	constexpr sf::Vector2f v_{0.f,0.f};					// 人物外置颜色	
 }
 
 class PlayerSystem

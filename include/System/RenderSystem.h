@@ -86,11 +86,6 @@ public:
 			BlockSquare
 		>();
 
-		/*for (auto [entity_, position, square] : player_)
-		{
-			square.shape_.setPosition({ position.x, position.y });
-			window_->draw(square.shape_);
-		}*/
 
 		for (auto entity_ : player_)
 		{

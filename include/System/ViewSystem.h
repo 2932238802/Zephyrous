@@ -63,6 +63,7 @@ class ViewSystem
 
 
 
+
 	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// SetView - ÉèÖÃÊÓÍ¼
@@ -76,7 +77,13 @@ class ViewSystem
 	{
 		if (window_)
 		{
-			window_->setView(view_.view);
+			auto player_position = registry_.view<PlayerPosition>();
+			for (auto a : player_position)
+			{
+				auto& position_ = registry_.get<PlayerPosition>(a);
+				view_.view.setCenter({position_.x,position_.y});
+				window_->setView(view_.view);
+			}
 		}
 		else
 		{

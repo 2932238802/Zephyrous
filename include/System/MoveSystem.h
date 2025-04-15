@@ -9,6 +9,9 @@
 class MoveSystem
 {
 private:
+	/// <summary>
+	/// 
+	/// </summary>
 	entt::registry&registry_;
 	std::shared_ptr<sf::RenderWindow> window_;
 

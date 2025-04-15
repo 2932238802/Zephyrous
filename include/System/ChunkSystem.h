@@ -4,6 +4,7 @@
 #include<fstream>
 #include<nlohmann/json.hpp> 
 
+#include"ChunkComponent/ChunkConfig.h"
 
 
 
@@ -99,8 +100,6 @@ public: // 基本构造 //
 				);
 			}
 		}
-		
-		DLOG("ChunkLoad 函数被加载");
 	}
 	
 	

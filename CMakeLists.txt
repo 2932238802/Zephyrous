@@ -52,6 +52,8 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerMovement.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerAcceleration.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerSpeed.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerVisitor.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/Player.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
     "${HEADER_INCLUDE}/Component/Tool/Scale.h"
@@ -64,16 +66,19 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowRuntime.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowConfigBuilder.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowFactory.h"
+    "${HEADER_INCLUDE}/Component/WindowComponent/WindowVisitor.h"
 
     "${HEADER_INCLUDE}/System/PlayerSystem.h"
-    "${HEADER_INCLUDE}/System/WindowSystem.h"
+    "${HEADER_INCLUDE}/System/WindowManageSystem.h"
+    "${HEADER_INCLUDE}/System/WindowVisitorSystem.h"
     "${HEADER_INCLUDE}/System/ViewSystem.h"
     "${HEADER_INCLUDE}/System/RenderSystem.h"
     "${HEADER_INCLUDE}/System/PhysicsSystem.h"
     "${HEADER_INCLUDE}/System/MoveSystem.h"
     "${HEADER_INCLUDE}/System/ChunkSystem.h"
     "${HEADER_INCLUDE}/System/PlayerVisitorSystem.h"
-    "${HEADER_INCLUDE}/System/WindowVisitorSystem.h"
+    "${HEADER_INCLUDE}/System/System.h"
+    "${HEADER_INCLUDE}/System/DispatcherSystem.h"
 )
 
 # 生成可执行文件

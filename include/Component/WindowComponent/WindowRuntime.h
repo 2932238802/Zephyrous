@@ -33,9 +33,8 @@ struct WindowRuntime
 		if (&window_handle)
 		{
 			window_handle->setFramerateLimit(60);
-			window_handle->setKeyRepeatEnabled(false);			// 禁用按键重复
+			//window_handle->setKeyRepeatEnabled(false);			// 禁用按键重复
 			window_handle->setVerticalSyncEnabled(true);
-
 			//////////////////////////////////////////////////////////////////////////
 			//window_handle->setJoystickThreshold(0.5);			// 手柄阈值
 			//////////////////////////////////////////////////////////////////////////
