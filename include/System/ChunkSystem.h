@@ -2,9 +2,10 @@
 #include<SFML/Graphics.hpp>
 #include<entt/entt.hpp>
 #include<fstream>
-#include <nlohmann/json.hpp> 
+#include<nlohmann/json.hpp> 
 
-#include"ChunkComponent/ChunkConfig.h"
+
+
 
 //////////////////////////////////////////////////////////////////////////
 /// <summary>
@@ -17,6 +18,10 @@ namespace Chunksize
 	constexpr unsigned int CHUNK_HEIGHT = 14;
 	constexpr float BASE_Y_POS = 50.f;
 }
+
+
+
+
 class ChunkSystem
 {
 	using usd = unsigned;
@@ -62,13 +67,13 @@ public: // 基本构造 //
 	void ChunkLoad()
 	{
 		// 读取配置文件信息 //
-		auto reader_ = std::make_unique<std::ifstream>("chunkconfig.json");
-		if (!reader_->is_open())
+		std::ifstream reader_("chunkconfig.json");
+		if (!reader_.is_open())
 		{
 			DLOG("open json failed!");
 		}
 		nlohmann::json json_file;
-		*reader_ >> json_file;
+		reader_ >> json_file;
 		if (!json_file.contains("blockconfig"))
 		{
 			DLOG("json_file content is wrong!");
@@ -98,6 +103,12 @@ public: // 基本构造 //
 		DLOG("ChunkLoad 函数被加载");
 	}
 	
+	
+
+
+
+	
+
 
 
 	//////////////////////////////////////////////////////////////////////////
@@ -122,7 +133,6 @@ public: // 基本构造 //
 		auto entt_ = registry_.create();
 		registry_.emplace<BlockPosition>(entt_, pos_);                    // 位置
 		registry_.emplace<BlockSquare>(entt_, square_);                  // 方形 大小
-		registry_.emplace<BlockMoveAble>(entt_);                         // 可以移动
 		registry_.emplace<BlockKind>(entt_, kind_out);                   // 泥土
 		registry_.emplace<BlockDifficulty>(entt_, diffi_out);            // 难易
 	}

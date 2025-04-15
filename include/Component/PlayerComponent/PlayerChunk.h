@@ -1,8 +1,5 @@
 
 
 #pragma once
-struct PlayerChunk
-{
-	
+#include<SFML/Graphics.hpp>
 
-};

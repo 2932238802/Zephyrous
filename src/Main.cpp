@@ -19,13 +19,17 @@ int main()
 	MoveSystem movesystem_(registry_, window_);			// 移动系统	
 	RenderSystem rendersystem_(registry_, window_);		// 渲染系统
 	ChunkSystem chunksystem_(registry_, window_);
+	PlayerSystem playersystem_(registry_);
+	sf::Clock clock;
+
+
 	chunksystem_.ChunkLoad();
+	playersystem_.CreatePeopleChunk();
 	{
 		ViewConfig config_view;
 		config_view.LoadData();
 		viewsystem_.Init(config_view);
 	}
-	sf::Clock clock;
 
 	
 	

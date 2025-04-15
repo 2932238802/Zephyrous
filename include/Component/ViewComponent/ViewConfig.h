@@ -69,9 +69,6 @@ struct ViewConfig
 
 			size_ = { size_s_width,size_s_height };
 			center_ = { 0.0f,0.0f };
-
-			std::cout << "view size_x:" << size_.x << "view size_y:" << size_.y << std::endl;
-			std::cout << "view center_x:" << center_.x << "view center_y" << center_.y << std::endl;
 		}
 		// ³¬¹ý·¶Î§ //
 		catch (nlohmann::json::out_of_range&)

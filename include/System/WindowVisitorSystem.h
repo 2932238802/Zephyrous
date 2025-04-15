@@ -3,14 +3,21 @@
 #include"Tool/Debug.h"
 
 #include<SFML/Graphics.hpp>
+#include<entt/entt.hpp>
 #include<iostream>
 
 /// <summary>
 /// WindowVisitor - 检测外设输入
 /// </summary>
-struct WindowVisitor
+class WindowVisitor
 {
+public:
+
+
+
 	std::shared_ptr<sf::RenderWindow> window_;
+	entt::registry& registry_;
+	
 
 	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
@@ -20,8 +27,9 @@ struct WindowVisitor
 	/// <param name="window">
 	/// 初始化window
 	/// </param>
-	WindowVisitor(sf::RenderWindow* window) :
-		window_(window)
+	WindowVisitor(sf::RenderWindow* window , entt::registry& registry_out) :
+		window_(window),
+		registry_(registry_out)
 	{
 	}
 	//////////////////////////////////////////////////////////////////////////
@@ -33,6 +41,7 @@ struct WindowVisitor
 	/// <summary>
 	/// 设置窗口指针
 	/// </summary>
+	/// 
 	/// <param name="window">
 	/// window - 传入窗口指针
 	/// </param>

@@ -4,3 +4,5 @@
 #include"System/WindowSystem.h"
 #include"System/MoveSystem.h"
 #include"System/ChunkSystem.h"
+#include"System/WindowVisitorSystem.h"
+#include"System/PlayerVisitorSystem.h"

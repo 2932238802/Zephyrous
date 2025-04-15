@@ -1,11 +1,11 @@
 #pragma once
 #include<iostream>
 
-struct State
+struct PlayerState
 {
 	int hp_;
 	int energe_;
-	State(int hp, int energe) :hp_(hp), energe_(energe) {}
+	PlayerState(int hp, int energe) :hp_(hp), energe_(energe) {}
 
 	/// <summary>
 	/// AlterAttr - ¸Ä±äÊôĞÔ

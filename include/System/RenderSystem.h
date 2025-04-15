@@ -5,6 +5,8 @@
 
 #include"WindowComponent/WindowRuntime.h"
 #include"ChunkComponent/ChunkConfig.h"
+#include"PlayerComponent/Player.h"
+
 #include"Tool/Debug.h"
 
 /// <summary>
@@ -54,13 +56,13 @@ public:
 			BlockPosition,
 			BlockSquare,
 			BlockKind,
-			BlockDifficulty,
-			BlockMoveAble
+			BlockDifficulty
 			>();
 
 		if (block_position_square_all.begin() == block_position_square_all.end())
 		{
-			DLOG("entt is empty");
+			DLOG("entt is empty");		// 打印
+			return;						// 避免不必要的循环
 		}
 		for (auto [entity_, pos_, square_, kind_, diffi_] : block_position_square_all.each())
 		{
@@ -69,4 +71,35 @@ public:
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////
+
+
+
+public:
+	//////////////////////////////////////////////////////////////////////////
+	/// <summary>
+	/// DrawPlayer - 人物绘制
+	/// </summary>
+	void DrawPlayer()
+	{
+		auto player_ = registry_.view<
+			PlayerPosition,
+			BlockSquare
+		>();
+
+		/*for (auto [entity_, position, square] : player_)
+		{
+			square.shape_.setPosition({ position.x, position.y });
+			window_->draw(square.shape_);
+		}*/
+
+		for (auto entity_ : player_)
+		{
+			auto& position = registry_.get<PlayerPosition>(entity_);
+			auto& square = registry_.get<BlockSquare>(entity_);
+			square.shape_.setPosition({ position.x,position.y });
+			window_->draw(square.shape_);
+		}
+	}
+	//////////////////////////////////////////////////////////////////////////
+
 };

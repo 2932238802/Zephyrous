@@ -6,10 +6,9 @@
 #include"WindowComponent/WindowConfigBuilder.h"
 #include"WindowComponent/WindowRuntime.h"
 #include"WindowComponent/WindowFactory.h"
-#include"WindowComponent/WindowVisitor.h"
 
+#include"System/WindowVisitorSystem.h"
 #include"System/RenderSystem.h"
-
 #include"Tool/Debug.h"
 
 class WindowSystem
@@ -26,7 +25,7 @@ private:
 	/// </summary>
 	public:
 	WindowSystem(entt::registry& registry_out):
-		visitor_(nullptr),
+		visitor_(nullptr,registry_out),
 		registry_(registry_out)
 	{}
 
@@ -52,12 +51,12 @@ private:
 		auto entt_ = registry_.create();
 		window_ =
 			WindowFactory::CreateWindow(
-			config_.mode_,											// 大小 //
-			config_.name_											// 名字 //
+			config_.mode_,								// 大小 //
+			config_.name_								// 名字 //
 		);
 		window_.clear_color = config_.clear_color;
 		
-		visitor_.SetWindow(window_.window_handle);			// 监听器
+		visitor_.SetWindow(window_.window_handle);		// 监听器 //
 		return window_.window_handle;
 	}
 	//////////////////////////////////////////////////////////////////////////
@@ -77,6 +76,7 @@ private:
 	{
 		window_.window_handle->clear(window_.clear_color);
 		render.DrawSquare();
+		render.DrawPlayer();
 		while (std::optional<sf::Event>&& e_ = window_.window_handle->pollEvent()) {
 			HandleEvent(*e_);												// 处理每个事件
 		}
@@ -97,7 +97,4 @@ private:
 		e_.visit(visitor_);
 	}
 	//////////////////////////////////////////////////////////////////////////
-
-private:
-
 };

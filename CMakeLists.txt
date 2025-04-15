@@ -17,7 +17,6 @@ set(HEADER_INCLUDE "${PROJECT_SOURCE_DIR}/include")
 # 查找 SFML（通过 vcpkg）
 find_package(SFML COMPONENTS Graphics Window System Network Audio CONFIG REQUIRED)
 
-
 # 查找json包
 find_package(nlohmann_json CONFIG REQUIRED)
 set(nlohmann-json_IMPLICIT_CONVERSIONS OFF)
@@ -31,13 +30,11 @@ set(SOURCES
     "${PROJECT_SOURCE_DIR}/src/Main.cpp"
 )
 
-
 # 头文件列表（保持原样）
 set(HEADERS
     # ...（原有头文件路径）
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockDifficulty.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockKind.h"
-    "${HEADER_INCLUDE}/Component/BlockComponent/BlockMovement.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockPosition.h"
     "${HEADER_INCLUDE}/Component/BlockComponent/BlockSquare.h"
     
@@ -46,12 +43,15 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkPos.h"
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkConfig.h"
 
+    "${HEADER_INCLUDE}/Component/ComComponent/ComStata.h"
+
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerChunk.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerPosition.h"
-    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerStata.h"
-    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerEquip.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerState.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerItem.h"
-    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayMovement.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerMovement.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerAcceleration.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerSpeed.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
     "${HEADER_INCLUDE}/Component/Tool/Scale.h"
@@ -64,15 +64,16 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowRuntime.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowConfigBuilder.h"
     "${HEADER_INCLUDE}/Component/WindowComponent/WindowFactory.h"
-    "${HEADER_INCLUDE}/Component/WindowComponent/WindowVisitor.h"
 
     "${HEADER_INCLUDE}/System/PlayerSystem.h"
     "${HEADER_INCLUDE}/System/WindowSystem.h"
     "${HEADER_INCLUDE}/System/ViewSystem.h"
     "${HEADER_INCLUDE}/System/RenderSystem.h"
-    
+    "${HEADER_INCLUDE}/System/PhysicsSystem.h"
     "${HEADER_INCLUDE}/System/MoveSystem.h"
     "${HEADER_INCLUDE}/System/ChunkSystem.h"
+    "${HEADER_INCLUDE}/System/PlayerVisitorSystem.h"
+    "${HEADER_INCLUDE}/System/WindowVisitorSystem.h"
 )
 
 # 生成可执行文件
