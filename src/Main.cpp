@@ -16,19 +16,41 @@ int main()
 		window_ = windowsystem_.Init(config_window);
 	}
 
+	// 窗口系统 //
 	WindowVisitorSystem window_visitor(registry_, window_.get());
+
+	// 玩家系统 //
 	PlayerVisitorSystem player_visitor(registry_, window_.get());
-	ViewSystem viewsystem_(registry_ ,window_);			// 视图系统
-	MoveSystem movesystem_(registry_, window_);			// 移动系统	
-	RenderSystem rendersystem_(registry_, window_);		// 渲染系统
-	ChunkSystem chunksystem_(registry_, window_);
+
+	// 碰撞系统 //
+	CollisionDetectionSystem collisystem(registry_);
+
+	// 视图系统 //
+	ViewSystem viewsystem_(registry_ ,window_.get());			
+
+	// 移动系统 //
+	MoveSystem movesystem_(registry_, window_.get());			
+
+	// 渲染系统 //
+	RenderSystem rendersystem_(registry_, window_.get());		
+
+	// 模块系统 //
+	ChunkSystem chunksystem_(registry_, window_.get());
+
+	// 玩家系统 //
 	PlayerSystem playersystem_(registry_);
+
+	// 物理系统 //
 	PhysicsSystem physicsystem_(registry_);
-	DispatcherSystem dispatcherSystem_(registry_);		
+
+	// 分配系统检测 //
+	DispatcherSystem dispatcherSystem_(registry_);	
+
+
 	sf::Clock clock;
 
-	chunksystem_.ChunkLoad();
-	playersystem_.CreatePeopleChunk();
+	chunksystem_.ChunkLoad();				// 区块加载
+	playersystem_.CreatePeopleChunk();		// 任务加载
 	{
 		ViewConfig config_view;
 		config_view.LoadData();
@@ -40,9 +62,10 @@ int main()
 	while (true) {
 		float delta_time = clock.restart().asSeconds();
 		window_->clear();
-		viewsystem_.SetView();
-		rendersystem_.DrawPlayer();
-		rendersystem_.DrawSquare();
+		viewsystem_.SetView();								// 设置视图
+		rendersystem_.DrawPlayer();							// 绘制人物
+		rendersystem_.DrawSquare();							// 绘制方块
+
 
 		while (std::optional<sf::Event> e_ = window_->pollEvent())
 		{
@@ -52,8 +75,8 @@ int main()
 				player_visitor
 				);
 		}
-
-		physicsystem_.UpdatePlayer(delta_time);
+		physicsystem_.UpdatePlayer(delta_time);				// 更新玩家位置
+		collisystem.UpdatePlayer();						// 更新碰撞
 
 		window_->display();
 		if (!window_->isOpen()) {

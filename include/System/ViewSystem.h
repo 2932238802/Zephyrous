@@ -15,7 +15,7 @@ class ViewSystem
 	private:
 	ViewRuntime view_;
 	entt::registry& registry_;
-	std::shared_ptr<sf::RenderWindow> window_;
+	sf::RenderWindow* window_;
 	//////////////////////////////////////////////////////////////////////////
 
 
@@ -26,9 +26,9 @@ class ViewSystem
 	/// 
 	/// </summary>
 	public:
-	ViewSystem(entt::registry& registry_out,std:: shared_ptr<sf::RenderWindow> window_out):
+	ViewSystem(entt::registry& registry_out,sf::RenderWindow* window_out):
 		registry_(registry_out),
-		window_(std::move(window_out))
+		window_(window_out)
 	{
 	}
 	//////////////////////////////////////////////////////////////////////////

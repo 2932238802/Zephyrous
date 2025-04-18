@@ -11,9 +11,6 @@ struct ViewConfig
 	sf::Vector2f size_;
 	sf::Vector2f center_;
 
-
-
-
 	//////////////////////////////////////////////////////////////////////////
 	/// <summary>
 	/// LoadData - МгдиЪ§Он

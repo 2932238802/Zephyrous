@@ -8,10 +8,11 @@
 
 namespace
 {
-	constexpr float friction_ = 0.8f;
-	constexpr float min_acceleration = 0.01f;
-	constexpr float max_speed = 30.0f;
-	constexpr float min_speed = 1.f;
+	constexpr float friction_ = 0.8f;					// 摩擦阻力
+	constexpr float min_acceleration = 0.01f;			// 水平加速度
+	constexpr float min_acceleration_y = 0.01f;			// 向下的加速度 重力加速度
+	constexpr float max_speed = 100.0f;					// 最大速度
+	constexpr float min_speed = 1.f;					// 最小速度
 }
 
 class PhysicsSystem
@@ -44,7 +45,7 @@ public:
 			]: player_.each())
 		{
 			// 更新速度: v = v + a * t
-			player_speed.speed_.x += player_acceleration.a_ * time_;
+			player_speed.speed_.x += player_acceleration.a_x * time_;
 
 			// 速度限制 //
 			if (player_speed.speed_.x > max_speed) {
@@ -67,7 +68,7 @@ public:
 			}
 
 			// 重置加速度
-			player_acceleration.a_ = 0.0f;
+			player_acceleration.a_x = 0.0f;
 		}
 	}
 	//////////////////////////////////////////////////////////////////////////

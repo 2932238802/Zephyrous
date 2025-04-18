@@ -13,7 +13,7 @@ private:
 	/// 
 	/// </summary>
 	entt::registry&registry_;
-	std::shared_ptr<sf::RenderWindow> window_;
+	sf::RenderWindow* window_;
 
 
 
@@ -23,9 +23,9 @@ public:
 	/// MoveSystem - ªÒ»°esc
 	/// </summary>
 	/// <param name="registry_out"></param>
-	MoveSystem(entt::registry& registry_out,std::shared_ptr<sf::RenderWindow> window_out):
+	MoveSystem(entt::registry& registry_out,sf::RenderWindow* window_out):
 		registry_(registry_out),
-		window_(std::move(window_out))
+		window_(window_out)
 	{
 	}
 	//////////////////////////////////////////////////////////////////////////

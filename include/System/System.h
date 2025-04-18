@@ -12,6 +12,7 @@
 #include"System/WindowManageSystem.h"
 #include"System/WindowVisitorSystem.h"
 #include"System/DispatcherSystem.h"
+#include"System/CollisionDetectionSystem.h"
 
 
 

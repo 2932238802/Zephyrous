@@ -3,6 +3,9 @@
 #pragma once
 #include<SFML/Graphics.hpp>
 
+/// <summary>
+/// PlayerPosition - 玩家的位置信息
+/// </summary>
 struct PlayerPosition
 {
 	float x;
@@ -14,4 +17,8 @@ struct PlayerPosition
 		y = pos_.y;
 	}
 
+	sf::Vector2f GetPosition()
+	{
+		return { x,y };
+	}
 };

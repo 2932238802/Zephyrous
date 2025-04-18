@@ -7,4 +7,6 @@
 #include"PlayerComponent/PlayerAcceleration.h"
 #include"PlayerComponent/PlayerSpeed.h"
 #include"PlayerComponent/PlayerVisitor.h"
+#include"PlayerComponent/PlayerFront.h"
+
 #include"BlockComponent/BlockSquare.h"

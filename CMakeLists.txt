@@ -44,6 +44,7 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/ChunkComponent/ChunkConfig.h"
 
     "${HEADER_INCLUDE}/Component/ComComponent/ComStata.h"
+    "${HEADER_INCLUDE}/Component/ComComponent/ComCollision.h"
 
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerChunk.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerPosition.h"
@@ -53,6 +54,7 @@ set(HEADERS
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerAcceleration.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerSpeed.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerVisitor.h"
+    "${HEADER_INCLUDE}/Component/PlayerComponent/PlayerFront.h"
     "${HEADER_INCLUDE}/Component/PlayerComponent/Player.h"
 
     "${HEADER_INCLUDE}/Component/Tool/Debug.h"
@@ -79,6 +81,7 @@ set(HEADERS
     "${HEADER_INCLUDE}/System/PlayerVisitorSystem.h"
     "${HEADER_INCLUDE}/System/System.h"
     "${HEADER_INCLUDE}/System/DispatcherSystem.h"
+    "${HEADER_INCLUDE}/System/CollisionDetectionSystem.h"
 )
 
 # 生成可执行文件

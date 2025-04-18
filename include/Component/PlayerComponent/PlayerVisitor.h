@@ -6,6 +6,12 @@
 #include<entt/entt.hpp>
 #include<iostream>
 
+namespace
+{
+	constexpr float a_x = 3000.f;
+}
+
+
 /// <summary>
 /// PlayerVisitor - 检测外设输入
 /// </summary>
@@ -84,8 +90,7 @@ struct PlayerVisitor
 			for (auto a : entities_)
 			{
 				auto& acc_ = registry_.get<PlayerAcceleration>(a);
-				acc_.a_ = -1000.0f;
-				std::cout << "按了 A" << std::endl;
+				acc_.a_x = -a_x;
 			}
 			break;
 		}
@@ -96,8 +101,7 @@ struct PlayerVisitor
 			for (auto a : entities_)
 			{
 				auto& acc_ = registry_.get<PlayerAcceleration>(a);
-				acc_.a_ = 1000.0f;
-				std::cout << "按了 D" << std::endl;
+				acc_.a_x = a_x;
 			}
 			break;
 		}
@@ -106,6 +110,10 @@ struct PlayerVisitor
 		{
 			std::cout << "向下 还未能实现" << std::endl;
 			break;
+
+		}
+		case(key_t::Space):
+		{
 
 		}
 		default:

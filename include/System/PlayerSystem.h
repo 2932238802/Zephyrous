@@ -8,8 +8,9 @@
 
 namespace
 {
-	constexpr float play_a =-0.9;						// 加速度
-	constexpr sf::Vector2f pos_{ 0.f,-50.f };			// 人物移动
+	constexpr float player_a_x =-0.9;					// 水平加速度
+	constexpr float player_a_y =-0.9;					// 竖直加速度
+	constexpr sf::Vector2f pos_player{ 0.f,0.f };			// 人物位置
 	constexpr sf::Vector2f size_player(100.f, 100.f);	// 人物体积
 	constexpr float	thickness_player = 0.f;				// 边框粗度
 	constexpr sf::Color color_in(sf::Color::Blue);		// 人物内置颜色	
@@ -60,10 +61,10 @@ public:
 		registry_.emplace<BlockSquare>(entity_, player_block);
 
 		// 位置加入实体 //
-		registry_.emplace<PlayerPosition>(entity_, pos_);
+		registry_.emplace<PlayerPosition>(entity_, pos_player);
 
 		// 加入加速度
-		PlayerAcceleration a_(play_a);
+		PlayerAcceleration a_(player_a_x,player_a_y);
 		registry_.emplace<PlayerAcceleration>(entity_, a_);
 
 		// 加入速度 //
@@ -71,5 +72,11 @@ public:
 
 		// 加入可移动标签
 		registry_.emplace<MoveStata>(entity_);
+
+		// 碰撞 
+		registry_.emplace<ComCollisionPlayer>(entity_);
+
+		// 提前渲染区块
+		registry_.emplace<PlayerFront>(entity_);
 	}
 };

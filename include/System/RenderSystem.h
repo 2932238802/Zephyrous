@@ -20,7 +20,7 @@ private:
 	/// 
 	/// </summary>
 	entt::registry& registry_;
-	std::shared_ptr<sf::RenderWindow> window_;
+	sf::RenderWindow* window_;
 
 
 
@@ -32,10 +32,10 @@ public:
 	/// <param name="register_out"></param>
 	RenderSystem(
 		entt::registry& register_out,
-		std::shared_ptr<sf::RenderWindow> window_out
+		sf::RenderWindow* window_out
 	) :
 		registry_(register_out),
-		window_(std::move(window_out))
+		window_(window_out)
 	{
 	}
 	//////////////////////////////////////////////////////////////////////////
