@@ -44,13 +44,13 @@ public: // 基本构造 //
 	/// <param name="window_out">
 	/// 外部窗口指针
 	/// </param>
-	ChunkSystem(entt::registry& regietry_out,sf::RenderWindow* window_out) :
+	ChunkSystem(entt::registry& regietry_out, sf::RenderWindow* window_out) :
 		registry_(regietry_out),
 		window_(window_out)
 	{
 	}
 	//////////////////////////////////////////////////////////////////////////
-	
+
 
 
 
@@ -59,55 +59,56 @@ public: // 基本构造 //
 	/// <summary>
 	/// ChunkLoad - 区块加载
 	/// </summary>
-	public:
-		void ChunkLoad()
+public:
+	void ChunkLoad()
+	{
+		// 读取配置文件信息 //
+		std::ifstream reader_("chunkconfig.json");
+		if (!reader_.is_open())
 		{
-			// 读取配置文件信息 //
-			std::ifstream reader_("chunkconfig.json");
-			if (!reader_.is_open())
-			{
-				DLOG("open json failed!");
-			}
-			nlohmann::json json_file;
-			reader_ >> json_file;
-			if (!json_file.contains("blockconfig"))
-			{
-				DLOG("json_file content is wrong!");
-			}
-			//reader_->close(); std::unique_ptr 会自动处理
-
-			// 获取尺寸大小 //
-			auto& block_config = json_file.at("blockconfig");
-			float size_ = block_config.at("size").get<float>();
-			// i 表示宽度 j 表示高度 //
-			for (int i = 0; i < Chunksize::CHUNK_WIDTH; i++)
-			{
-				for (int j = 0; j < Chunksize::CHUNK_HEIGHT; j++)
-				{
-					CreateSquare(
-						{ (i - 16) * size_, Chunksize::BASE_Y_POS + j * size_ },
-						Diffi::Easy,
-						Kind::Empty,
-						{ size_,size_ },
-						2.f,
-						sf::Color::White,
-						sf::Color::Red
-					);
-				}
-			}
-
-			//////////////////////////////////////////////////////////////////////////
-			// test //
-			CreateSquare(
-				{ 3*size_ , 0.f },
-				Diffi::Easy,
-				Kind::Empty,
-				{ size_,size_ },
-				2.f,
-				sf::Color::White,
-				sf::Color::Red
-			//////////////////////////////////////////////////////////////////////////
+			DLOG("open json failed!");
 		}
+		nlohmann::json json_file;
+		reader_ >> json_file;
+		if (!json_file.contains("blockconfig"))
+		{
+			DLOG("json_file content is wrong!");
+		}
+		//reader_->close(); std::unique_ptr 会自动处理
+
+		// 获取尺寸大小 //
+		auto& block_config = json_file.at("blockconfig");
+		float size_ = block_config.at("size").get<float>();
+		// i 表示宽度 j 表示高度 //
+		for (int i = 0; i < Chunksize::CHUNK_WIDTH; i++)
+		{
+			for (int j = 0; j < Chunksize::CHUNK_HEIGHT; j++)
+			{
+				CreateSquare(
+					{ (i - 16) * size_, Chunksize::BASE_Y_POS + j * size_ },
+					Diffi::Easy,
+					Kind::Empty,
+					{ size_,size_ },
+					2.f,
+					sf::Color::White,
+					sf::Color::Red
+				);
+			}
+		}
+
+		//////////////////////////////////////////////////////////////////////////
+		// test //
+		CreateSquare(
+			{ 3 * size_ , 0.f },
+			Diffi::Easy,
+			Kind::Empty,
+			{ size_,size_ },
+			2.f,
+			sf::Color::White,
+			sf::Color::Red
+		);
+	}
+			//////////////////////////////////////////////////////////////////////////
 	
 	
 
